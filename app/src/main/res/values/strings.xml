@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">FloatingDesidimeLauncher</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Welcome message -->
+    <string name="welcome_label">Welcome To Floating Application</string>
+
+    <!-- Labels for dialog display -->
+    <string name="dialog_title_label">Permission Required</string>
+    <string name="dialog_description_label">In Android 5.1 or above, you must permit usage access for this app to use further.</string>
+    <string name="dialog_cancel_label">CANCEL</string>
+    <string name="dialog_permit_label">PERMIT</string>
+
+    <!-- Snackbar labels -->
+    <string name="ok_label">OK</string>
+    <string name="usage_access_permission_already_on_label">USAGE ACCESS PERMISSION ALREADY ENABLED</string>
+    <string name="usage_access_permission_not_required_label">USAGE ACCESS PERMISSION NOT REQUIRED</string>
+    <string name="receiving_notification_on_label">You will get notified for Coupons</string>
+    <string name="receiving_notification_off_label">USAGE ACCESS permission is required to get notified for Coupons</string>
+
+    <!-- Error Labels -->
+    <string name="internet_unavailable_label">No internet connection.</string>
+    <string name="technical_error_label">Something goes wrong. Please try again.</string>
+    <string name="empty_list_error_label">Currently, Deal list seems to be empty. Please try online.</string>
+
+    <string name="amazon_app_hading_label">Amazon Deals</string>
+    <string name="flipkart_app_heading_label">Flipkart Deals</string>
+
+
+</resources>
