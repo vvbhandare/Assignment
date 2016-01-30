@@ -36,6 +36,9 @@
         <activity android:name=".activities.DisplayContentsActivity"
             android:screenOrientation="portrait"></activity>
 
+        <activity android:name=".activities.DealsWebViewActivity"
+            android:screenOrientation="portrait"></activity>
+
     </application>
 
 </manifest>

@@ -8,6 +8,7 @@ public class CopounInfo {
     private String copounName;
     private String copounIcon;
     private int offerID;
+    private String copounLink;
 
     public String getCopounName() {
         return copounName;
@@ -31,5 +32,13 @@ public class CopounInfo {
 
     public void setOfferID(int offerID) {
         this.offerID = offerID;
+    }
+
+    public String getCopounLink() {
+        return copounLink;
+    }
+
+    public void setCopounLink(String copounLink) {
+        this.copounLink = copounLink;
     }
 }

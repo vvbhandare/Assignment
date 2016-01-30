@@ -29,5 +29,7 @@
     <string name="amazon_app_hading_label">Amazon Deals</string>
     <string name="flipkart_app_heading_label">Flipkart Deals</string>
 
+    <string name="deals_browsing_label">Deals Browsing</string>
+
 
 </resources>

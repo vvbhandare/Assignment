@@ -1,6 +1,7 @@
 package desidime.com.floatingdesidimelauncher.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
@@ -25,6 +26,7 @@ import desidime.com.floatingdesidimelauncher.adapters.CustomCopounAdapter;
 import desidime.com.floatingdesidimelauncher.asyncs.BackgroundWork;
 import desidime.com.floatingdesidimelauncher.helpers.DatabaseHandler;
 import desidime.com.floatingdesidimelauncher.interfaces.OnBackgroundTaskCompleted;
+import desidime.com.floatingdesidimelauncher.interfaces.RecyclerItemClickListener;
 import desidime.com.floatingdesidimelauncher.models.CopounInfo;
 import desidime.com.floatingdesidimelauncher.universals.ConnectionDetector;
 import desidime.com.floatingdesidimelauncher.utils.DesidimeConstants;
@@ -84,6 +86,23 @@ public class DisplayContentsActivity extends AppCompatActivity implements
                 launchPopUp(getResources().getString(R.string.empty_list_error_label));
             }
         }
+
+        setListener();
+    }
+
+    private void setListener() {
+        recyclerViewDisplayCopouns.addOnItemTouchListener(
+                new RecyclerItemClickListener(context, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        // TODO Handle item click
+                        Log.v("...GOT THE CLICK....", "" + arrayListCopouns.get(position).getCopounLink());
+                        Intent intentDealBrowsing = new Intent(context, DealsWebViewActivity.class);
+                        intentDealBrowsing.putExtra(DesidimeConstants.DEALS_LINK_KEY,
+                                                arrayListCopouns.get(position).getCopounLink());
+                        startActivity(intentDealBrowsing);
+                    }
+                })
+        );
     }
 
     private void setHeaderTitle(int deal_id) {
@@ -154,6 +173,7 @@ public class DisplayContentsActivity extends AppCompatActivity implements
                     copounInfo.setCopounName(jsonArrayDeals.getJSONObject(i).getString(DesidimeConstants.TITLE_KEY));
                     copounInfo.setCopounIcon(jsonArrayDeals.getJSONObject(i).getString(DesidimeConstants.ICON_KEY));
                     copounInfo.setOfferID(DesidimeConstants.DEAL_ID);
+                    copounInfo.setCopounLink(jsonArrayDeals.getJSONObject(i).getString(DesidimeConstants.DEALS_LINK_KEY));
                     arrayListCopouns.add(copounInfo);
                     databaseHandler.addDeal(copounInfo);
                 }
@@ -165,6 +185,7 @@ public class DisplayContentsActivity extends AppCompatActivity implements
                         copounInfo.setCopounName(jsonArrayCopouns.getJSONObject(i).getString(DesidimeConstants.COPOUN_TITLE_KEY));
                         copounInfo.setCopounIcon(jsonArrayCopouns.getJSONObject(i).getString(DesidimeConstants.ICON_KEY));
                         copounInfo.setOfferID(DesidimeConstants.DEAL_ID);
+                        copounInfo.setCopounLink(jsonArrayCopouns.getJSONObject(i).getString(DesidimeConstants.DEALS_LINK_KEY));
                         arrayListCopouns.add(copounInfo);
                         databaseHandler.addDeal(copounInfo);
                     }
@@ -179,6 +200,7 @@ public class DisplayContentsActivity extends AppCompatActivity implements
                                                     .getJSONObject(DesidimeConstants.TOPICS_USER_KEY)
                                                     .getString(DesidimeConstants.ICON_KEY));
                         copounInfo.setOfferID(DesidimeConstants.DEAL_ID);
+                        copounInfo.setCopounLink("http://www.desidime.com/stores");
                         arrayListCopouns.add(copounInfo);
                         databaseHandler.addDeal(copounInfo);
                     }

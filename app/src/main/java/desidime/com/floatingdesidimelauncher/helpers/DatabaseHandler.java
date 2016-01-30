@@ -23,6 +23,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_DEAL_NAME = "deal_name";
     private static final String KEY_DEAL_BELOG_TO_WHICH_APP = "deal_belong_to";
     private static final String KEY_DEAL_ICON = "deal_icon";
+    private static final String KEY_DEAL_LINK = "deal_url";
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -34,7 +35,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_DEALS_TABLE = "CREATE TABLE " + TABLE_DEALS + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_DEAL_NAME + " TEXT,"
-                + KEY_DEAL_ICON + " TEXT," + KEY_DEAL_BELOG_TO_WHICH_APP + " INTEGER" + ")";
+                + KEY_DEAL_ICON + " TEXT,"
+                + KEY_DEAL_LINK + " TEXT,"
+                + KEY_DEAL_BELOG_TO_WHICH_APP + " INTEGER" + ")";
         db.execSQL(CREATE_DEALS_TABLE);
     }
 
@@ -55,6 +58,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_DEAL_NAME, copounInfo.getCopounName()); // deal Name
         values.put(KEY_DEAL_ICON, copounInfo.getCopounIcon()); // deal Icon
+        values.put(KEY_DEAL_LINK, copounInfo.getCopounLink());
         values.put(KEY_DEAL_BELOG_TO_WHICH_APP, copounInfo.getOfferID()); //deal belong to
 
         // Inserting Row
@@ -78,6 +82,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 CopounInfo copounInfo = new CopounInfo();
                 copounInfo.setCopounName(cursor.getString(1));
                 copounInfo.setCopounIcon(cursor.getString(2));
+                copounInfo.setCopounLink(cursor.getString(3));
                 // Adding deal to list
                 dealList.add(copounInfo);
             } while (cursor.moveToNext());

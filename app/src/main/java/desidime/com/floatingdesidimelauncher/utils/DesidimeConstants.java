@@ -27,6 +27,7 @@ public class DesidimeConstants {
     public static final String DEALS_KEY = "deals";
     public static final String TITLE_KEY = "title";
     public static final String ICON_KEY = "image_large";
+    public static final String DEALS_LINK_KEY = "share_url";
 
     public static final String COPOUNS_KEY = "coupons";
     public static final String COPOUN_TITLE_KEY = "coupon_detail";
@@ -34,6 +35,8 @@ public class DesidimeConstants {
 
     public static final String TOPICS_KEY = "topics";
     public static final String TOPICS_USER_KEY = "user";
+
+    public static final String DUMMY_URL = "http://www.desidime.com";
 
 
 
